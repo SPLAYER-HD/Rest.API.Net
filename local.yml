@@ -1,9 +1,5 @@
 version: '3.4'
 
-networks:
-  restapi-dev:
-    driver: bridge
-
 services:
   restapi: 
     image: restapi:latest

@@ -6,7 +6,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace Rest.API.Controllers
 {
-    [Route("[controller]")]
+    [Route("api/[controller]")]
     [ApiController]
     [ApiVersion("1.0")]
     public class TriangleTypeController

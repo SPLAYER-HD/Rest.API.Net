@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Rest.API.Controllers
 {
-    [Route("[controller]")]
+    [Route("api/[controller]")]
     [ApiController]
     [ApiVersion("1.0")]
     public class TokenController

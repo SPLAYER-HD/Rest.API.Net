@@ -7,4 +7,4 @@ services:
       context: .
       dockerfile: ./compose/local/RestAPI/Dockerfile
     ports:
-      - "2905:80"
+      - "80:80"

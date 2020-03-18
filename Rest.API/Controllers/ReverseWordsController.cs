@@ -27,12 +27,12 @@ namespace Rest.API.Controllers
         /// { "value": "Diego Torres" }
         /// </example>
         /// <response code="200">Word(s) was/were reversed OK</response>
-        /// <param name="value">A sentence</param>
+        /// <param name="sentence">A sentence</param>
         [ProducesResponseType(typeof(String), 200)]
         [HttpGet]
-        public Task<String> Get([FromQuery] String value)
+        public Task<String> Get([FromQuery] String sentence)
         {
-            return Task.FromResult(_reverseWordsService.ReverseWords(value));
+            return Task.FromResult(_reverseWordsService.ReverseWords(sentence));
         }
     }
 }

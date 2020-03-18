@@ -32,16 +32,16 @@ namespace Rest.API.Controllers
         {
             Console.WriteLine("FibonacciController");
             Console.WriteLine("n "+ n);
+            if(n>9999 || n<-9999){
+                Console.WriteLine("if 0 ");
+                return Task.FromResult((long)0);    
+            }
             bool isNegative = false;
             if(n<0){
                 n = n * -1;
                 isNegative = true;
             }
             Console.WriteLine("n after"+ n);
-            if(n>9999){
-                Console.WriteLine("if 0 ");
-                return Task.FromResult((long)0);    
-            }
             Int64 result =_fibonacciService.Fibonacci(n);
             if(isNegative){
                 result = result * -1;

@@ -7,6 +7,9 @@ namespace Rest.API.Services
     {
         public String ReverseWords(String value)
         {
+            if(value == ""){
+                return value;
+            }
             string [] words =value.Split(" ");
             foreach(string word in words)
             {

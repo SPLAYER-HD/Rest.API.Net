@@ -14,7 +14,9 @@ using Microsoft.AspNetCore.Mvc.Versioning;
 using Rest.API.Services;
 using Rest.API.Filters;
 using Rest.API.Models;
-using NSwag.AspNetCore;
+using System.Reflection;
+using System.IO;
+using Microsoft.OpenApi.Models;
 
 namespace Rest.API
 {
@@ -45,36 +47,40 @@ namespace Rest.API
             services.AddScoped<IFibonacciService, DefaultFibonacciService>();
             services.AddScoped<IReverseWordsService, DefaultReverseWordsService>();
             services.AddScoped<ITriangleTypeService, DefaultTriangleTypeService>();
-            services.AddSwaggerDocument(config =>
+            services.AddSwaggerGen(c =>
             {
-                config.PostProcess = document =>
+                c.SwaggerDoc("v1", new OpenApiInfo
                 {
-                    document.Info.Version = "v1";
-                    document.Info.Title = "Rest API";
-                    document.Info.Description = "A simple REST API with ASP.NET Core web API";
-                    document.Info.TermsOfService = "None";
-                    document.Info.Contact = new NSwag.OpenApiContact
+                    Title = "Diego API",
+                    Version = "v1",
+                    Description = "A simple REST API with ASP.NET Core web API",
+                    //TermsOfService = new Uri("None"),
+                    Contact = new OpenApiContact
                     {
                         Name = "Diego Torres",
                         Email = "ing.diego.torres95@gmail.com",
-                        Url = "https://www.linkedin.com/in/diego-torres-7b353822/"
-                    };
-                    document.Info.License = new NSwag.OpenApiLicense
+                        Url = new Uri("https://www.linkedin.com/in/diego-torres-7b353822/"),
+                    },
+                    License = new OpenApiLicense
                     {
                         Name = "Use under MIT",
-                        Url = "https://github.com/SPLAYER-HD"
-                    };
-                };
+                        Url = new Uri("https://github.com/SPLAYER-HD/Rest.API.Net/blob/master/LICENSE"),
+                    }
+                });
+
+                // Set the comments path for the Swagger JSON and UI.
+                var xmlFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
+                var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
+                c.IncludeXmlComments(xmlPath);
             });
+
             services.AddApiVersioning(options =>
             {
                 options.DefaultApiVersion = new ApiVersion(1, 0);
-                options.ApiVersionReader
-                    = new MediaTypeApiVersionReader();
+                options.ApiVersionReader = new MediaTypeApiVersionReader();
                 options.AssumeDefaultVersionWhenUnspecified = true;
                 options.ReportApiVersions = true;
-                options.ApiVersionSelector
-                     = new CurrentImplementationApiVersionSelector(options);
+                options.ApiVersionSelector = new CurrentImplementationApiVersionSelector(options);
             });
         }
 
@@ -84,8 +90,13 @@ namespace Rest.API
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
-                app.UseOpenApi();
-                app.UseSwaggerUi3();
+                //app.UseOpenApi();
+                // Enable middleware to serve generated Swagger as a JSON endpoint.
+                app.UseSwagger();
+                app.UseSwaggerUI(c =>
+                {
+                    c.SwaggerEndpoint("/swagger/v1/swagger.json", "MyAPI V1");
+                });
             }
 
             app.UseHttpsRedirection();

@@ -1,0 +1,14 @@
+version: '3.4'
+
+networks:
+  restapi-dev:
+    driver: bridge
+
+services:
+  restapi: 
+    image: restapi:latest
+    build:
+      context: .
+      dockerfile: ./compose/local/RestAPI/Dockerfile
+    ports:
+      - "2905:80"

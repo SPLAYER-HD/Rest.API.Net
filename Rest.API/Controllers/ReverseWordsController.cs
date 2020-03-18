@@ -32,7 +32,11 @@ namespace Rest.API.Controllers
         [HttpGet]
         public Task<String> Get([FromQuery] String sentence)
         {
-            return Task.FromResult(_reverseWordsService.ReverseWords(sentence));
+            Console.WriteLine("ReverseWordsController");
+            Console.WriteLine("sentence "+ sentence);
+            String result =_reverseWordsService.ReverseWords(sentence);
+            Console.WriteLine("result "+ result);
+            return Task.FromResult(result);
         }
     }
 }

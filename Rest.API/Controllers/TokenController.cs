@@ -21,6 +21,9 @@ namespace Rest.API.Controllers
         [HttpGet]
         public Task<Guid> Get()
         {
+            
+            Console.WriteLine("Token");
+            Console.WriteLine("result "+ "cbfca5cf-f16f-435b-bd09-a1963ee7cbe7");
             return Task.FromResult(new Guid("cbfca5cf-f16f-435b-bd09-a1963ee7cbe7"));
         }
         

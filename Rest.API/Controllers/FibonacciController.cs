@@ -30,10 +30,15 @@ namespace Rest.API.Controllers
         [HttpGet]
         public Task<Int64> Get([FromQuery][Required] int n)
         {
+            Console.WriteLine("FibonacciController");
+            Console.WriteLine("n "+ n);
+            Int64 result =_fibonacciService.Fibonacci(n);
             if(n>9999){
+                Console.WriteLine("if -1 ");
                 return Task.FromResult((long)-1);    
             }
-            return Task.FromResult(_fibonacciService.Fibonacci(n));
+            Console.WriteLine("result "+ result);
+            return Task.FromResult(result);
         }
         
         

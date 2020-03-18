@@ -14,7 +14,7 @@ namespace Rest.API.Services
 
         public Int64 RecursiveFibonacci(int n, Dictionary<int, Int64> memory)
         {
-            if (n == 0 || n ==1)
+            if (n == 0 || n ==1 || n ==-1)
             {
                 return (long)1;
             }

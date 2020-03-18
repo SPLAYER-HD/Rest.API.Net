@@ -28,7 +28,7 @@ namespace Rest.API.Controllers
         /// <param name="n">The index (n) of the fibonacci sequence</param>
         [ProducesResponseType(typeof(Int64), 200)]
         [HttpGet]
-        public Task<Int64> Get([FromQuery][Required] int n)
+        public Task<Int64> Get([FromQuery][Required] Int64 n)
         {
             Console.WriteLine("FibonacciController");
             Console.WriteLine("n "+ n);

@@ -6,13 +6,13 @@ namespace Rest.API.Services
 {
     public class DefaultFibonacciService : IFibonacciService
     {
-        public Int64  Fibonacci(int n)
+        public Int64  Fibonacci(Int64 n)
         {
-            Dictionary<int, Int64> memory = new Dictionary<int, Int64>();
+            Dictionary<Int64, Int64> memory = new Dictionary<Int64, Int64>();
             return RecursiveFibonacci(n-1, memory);
         }
 
-        public Int64 RecursiveFibonacci(int n, Dictionary<int, Int64> memory)
+        public Int64 RecursiveFibonacci(Int64 n, Dictionary<Int64, Int64> memory)
         {
             if (n == 0)
             {

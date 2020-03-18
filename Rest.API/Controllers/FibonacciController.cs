@@ -32,7 +32,7 @@ namespace Rest.API.Controllers
         {
             Console.WriteLine("FibonacciController");
             Console.WriteLine("n "+ n);
-            if(n>9999 || n<-9999){
+            if(n>9999 || n<-9999 || n == 0){
                 Console.WriteLine("if 0 ");
                 return Task.FromResult((long)0);    
             }

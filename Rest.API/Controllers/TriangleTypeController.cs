@@ -40,9 +40,11 @@ namespace Rest.API.Controllers
             Console.WriteLine("b "+ b);
             Console.WriteLine("c "+ c);
             if(a<=0 && b <=0 && c<=0){
+                Console.WriteLine("Error");
                 return Task.FromResult("Error");
             }
             if(a<0 || b <0 || c<0){
+                Console.WriteLine("Error");
                 return Task.FromResult("Error");
             }
             String result = _triangleTypeService.TrianlgeType(a, b, c);

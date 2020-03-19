@@ -72,6 +72,10 @@ namespace Rest.API.Controllers
                 Console.WriteLine("Error 2");
                 isValid = true;
             }
+            if(array[2] > array[1] + (array[1] - 1) ){
+                Console.WriteLine("Error 3");
+                isValid = true;
+            }
             return isValid;
         }
     }

@@ -23,12 +23,13 @@ namespace Rest.API.Services
             if(value != -1){
                 return value; 
             }else{
-                Console.WriteLine("--------");
+                /*Console.WriteLine("--------");
                 Console.WriteLine(n);
                 Console.WriteLine(n-1);
                 Console.WriteLine(n-2);
+                */
                 Int64 resultado = RecursiveFibonacci(n-1, memory) + RecursiveFibonacci(n-2, memory);
-                Console.WriteLine(resultado);
+                //Console.WriteLine(resultado);
                 memory.Add(n, resultado);
                 return resultado;
             }

@@ -35,11 +35,11 @@ namespace Rest.API.Controllers
             Console.WriteLine("FibonacciController");
             Console.WriteLine("n "+ n);
             if(n == 0){
-                Console.WriteLine("if 0 ");
+                Console.WriteLine("Result 0 ");
                 return Ok((long)0);
             }
             if(n>92 || n<-92){// it works until 9999 but to this example is restricted to 92
-                Console.WriteLine("if 0 ");
+                Console.WriteLine("no content");
                 return BadRequest("no content");
             }
             bool isNegative = false;

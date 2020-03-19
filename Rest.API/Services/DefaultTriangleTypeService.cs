@@ -78,6 +78,6 @@ namespace Rest.API.Services
         EQUILATERAL,
         ISOSCELES,
         SCALENE,
-        ERROR
+        Error
     }
 }

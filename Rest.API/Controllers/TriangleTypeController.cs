@@ -32,6 +32,7 @@ namespace Rest.API.Controllers
         /// <param name="c">The length of side c</param>
         [ProducesResponseType(typeof(String), 200)]
         [HttpGet]
+        //[Route("/{a:int:max(999999999)}/{b:int:max(999999999)}/{c:int:max(999999999)}")]
         public Task<String> Get([FromQuery][Required]int a, [FromQuery][Required]int b, [FromQuery][Required]int c)
         {
             
@@ -39,44 +40,15 @@ namespace Rest.API.Controllers
             Console.WriteLine("a "+ a);
             Console.WriteLine("b "+ b);
             Console.WriteLine("c "+ c);
-            if(Validate(a, b, c)){
-                Console.WriteLine("Error");
-                return Task.FromResult("Error");
-            }            
-            String result = _triangleTypeService.TrianlgeType(a, b, c);
-            Console.WriteLine("result "+ result);
-            return Task.FromResult(result);
-        }
-
-        public bool Validate(int a, int b, int c){
-            bool isValid = false;
             if(a<=0 || b <=0 || c<=0){
                 Console.WriteLine("Error 1");
-                isValid = true;
+                return Task.FromResult("Error");
             }
-            int[] array = new int[] { a, b, c };
-            Array.Sort(array); 
-            Console.WriteLine(array[0]);
-            Console.WriteLine(array[1]);
-            Console.WriteLine(array[2]);
-            /*
-            a b c
-            1 1 2 false
-            1 1 1 false
-
-            2 2 3 true
-            3 2 1 false
-            3 4 5 true
-            */
-            if(array[1] > array[0] + (array[0] - 1) || array[2] > array[0] + (array[0]- 1)){
-                Console.WriteLine("Error 2");
-                isValid = true;
-            }
-            if(array[2] > array[1] + (array[1] - 1) ){
-                Console.WriteLine("Error 3");
-                isValid = true;
-            }
-            return isValid;
+            
+            String result = _triangleTypeService.TrianlgeType(a, b, c);
+            
+            Console.WriteLine("result "+ result);
+            return Task.FromResult(result);
         }
     }
 }

@@ -9,6 +9,7 @@ namespace Rest.API.Controllers
     [Route("api/[controller]")]
     [ApiController]
     [ApiVersion("1.0")]
+    [Produces("application/json")]
     public class FibonacciController : ControllerBase
     {
         private readonly IFibonacciService _fibonacciService;

@@ -1,7 +1,6 @@
 using Rest.API.Services;
 using Microsoft.AspNetCore.Mvc;
 using System;
-using System.Threading.Tasks;
 using System.ComponentModel.DataAnnotations;
 
 namespace Rest.API.Controllers
@@ -32,14 +31,10 @@ namespace Rest.API.Controllers
         [HttpGet]
         public ActionResult<Int64> Get([FromQuery][Required] Int64 n)
         {
-            Console.WriteLine("FibonacciController");
-            Console.WriteLine("n "+ n);
             if(n == 0){
-                Console.WriteLine("Result 0 ");
                 return Ok((long)0);
             }
             if(n>92 || n<-92){// it works until 9999 but to this example is restricted to 92
-                Console.WriteLine("no content");
                 return BadRequest("no content");
             }
             bool isNegative = false;
@@ -47,12 +42,10 @@ namespace Rest.API.Controllers
                 n = n * -1;
                 isNegative = true;
             }
-            Console.WriteLine("n after"+ n);
             Int64 result =_fibonacciService.Fibonacci(n);
             if(isNegative && n%2==0){
                 result = result * -1;
             }
-            Console.WriteLine("result "+ result);
             return Ok(result);
         }
         

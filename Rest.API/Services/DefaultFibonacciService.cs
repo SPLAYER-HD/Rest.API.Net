@@ -1,5 +1,4 @@
-﻿using Microsoft.AspNetCore.Identity;
-using System;
+﻿using System;
 using System.Collections.Generic;
 
 namespace Rest.API.Services
@@ -18,18 +17,11 @@ namespace Rest.API.Services
             {
                 return (long)1;
             }            
-            //Console.WriteLine(memory[n]);
             Int64 value = memory.GetValueOrDefault(n, (long)-1);
             if(value != -1){
                 return value; 
             }else{
-                /*Console.WriteLine("--------");
-                Console.WriteLine(n);
-                Console.WriteLine(n-1);
-                Console.WriteLine(n-2);
-                */
                 Int64 resultado = RecursiveFibonacci(n-1, memory) + RecursiveFibonacci(n-2, memory);
-                //Console.WriteLine(resultado);
                 memory.Add(n, resultado);
                 return resultado;
             }

@@ -35,19 +35,10 @@ namespace Rest.API.Controllers
         //[Route("/{a:int:max(999999999)}/{b:int:max(999999999)}/{c:int:max(999999999)}")]
         public Task<String> Get([FromQuery][Required]int a, [FromQuery][Required]int b, [FromQuery][Required]int c)
         {
-            
-            Console.WriteLine("TriangleTypeController");
-            Console.WriteLine("a "+ a);
-            Console.WriteLine("b "+ b);
-            Console.WriteLine("c "+ c);
             if(a<=0 || b <=0 || c<=0){
-                Console.WriteLine("Error 1");
                 return Task.FromResult("Error");
             }
-            
             String result = _triangleTypeService.TrianlgeType(a, b, c);
-            
-            Console.WriteLine("result "+ result);
             return Task.FromResult(result);
         }
     }

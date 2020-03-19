@@ -2,7 +2,7 @@ version: '3.4'
 
 services:
   restapi: 
-    image: restapi:latest
+    image: restapidiegotorres:latest
     build:
       context: .
       dockerfile: ./compose/local/RestAPI/Dockerfile

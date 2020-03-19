@@ -1,4 +1,4 @@
-# Rest.API.Net
+# Rest.API.Net (Diego Torres)
 ===============
 Rest API NET C#
 

@@ -1,8 +1,5 @@
-using Rest.API.Services;
 using Microsoft.AspNetCore.Mvc;
 using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 
 namespace Rest.API.Controllers
@@ -22,8 +19,6 @@ namespace Rest.API.Controllers
         public Task<Guid> Get()
         {
             
-            Console.WriteLine("Token");
-            Console.WriteLine("result "+ "cbfca5cf-f16f-435b-bd09-a1963ee7cbe7");
             return Task.FromResult(new Guid("cbfca5cf-f16f-435b-bd09-a1963ee7cbe7"));
         }
         

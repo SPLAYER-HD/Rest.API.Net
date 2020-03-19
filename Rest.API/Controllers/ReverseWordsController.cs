@@ -1,8 +1,6 @@
 ﻿using Rest.API.Services;
 using Microsoft.AspNetCore.Mvc;
 using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 
 namespace Rest.API.Controllers
@@ -32,10 +30,7 @@ namespace Rest.API.Controllers
         [HttpGet]
         public Task<String> Get([FromQuery] String sentence)
         {
-            Console.WriteLine("ReverseWordsController");
-            Console.WriteLine("sentence "+ sentence);
             String result =_reverseWordsService.ReverseWords(sentence);
-            Console.WriteLine("result "+ result);
             return Task.FromResult(result);
         }
     }

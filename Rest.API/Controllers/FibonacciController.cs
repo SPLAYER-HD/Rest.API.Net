@@ -9,7 +9,7 @@ namespace Rest.API.Controllers
     [Route("api/[controller]")]
     [ApiController]
     [ApiVersion("1.0")]
-    public class FibonacciController
+    public class FibonacciController : ControllerBase
     {
         private readonly IFibonacciService _fibonacciService;
         
@@ -27,14 +27,19 @@ namespace Rest.API.Controllers
         /// <response code="200">Fibonacci was processed OK</response>
         /// <param name="n">The index (n) of the fibonacci sequence</param>
         [ProducesResponseType(typeof(Int64), 200)]
+        [ProducesResponseType(typeof(Int64), 400)]
         [HttpGet]
-        public Task<Int64> Get([FromQuery][Required] Int64 n)
+        public ActionResult<Int64> Get([FromQuery][Required] Int64 n)
         {
             Console.WriteLine("FibonacciController");
             Console.WriteLine("n "+ n);
-            if(n>9999 || n<-9999 || n == 0){
+            if(n == 0){
                 Console.WriteLine("if 0 ");
-                return Task.FromResult((long)0);    
+                return Ok((long)0);
+            }
+            if(n>9999 || n<-9999){
+                Console.WriteLine("if 0 ");
+                return BadRequest("no content");
             }
             bool isNegative = false;
             if(n<0){
@@ -47,7 +52,7 @@ namespace Rest.API.Controllers
                 result = result * -1;
             }
             Console.WriteLine("result "+ result);
-            return Task.FromResult(result);
+            return Ok(result);
         }
         
         

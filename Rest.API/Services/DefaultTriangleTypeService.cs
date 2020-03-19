@@ -37,7 +37,7 @@ namespace Rest.API.Services
             else if(repeats == 1){
                 if(IsRuleInvalid(singleNumber, numberDuplicated, 1)){
                     Console.WriteLine("Error 2");
-                    return Triangle.ERROR.ToString();
+                    return Triangle.Error.ToString();
                 }
                 return Triangle.ISOSCELES.ToString();
             }
@@ -45,20 +45,20 @@ namespace Rest.API.Services
             if(array[0]+1 == array[1]){
                 if(IsRuleInvalid(array[2], array[0], 0)){
                     Console.WriteLine("Error 3");
-                    return Triangle.ERROR.ToString();;
+                    return Triangle.Error.ToString();;
                 }
                 return Triangle.SCALENE.ToString();
             }
             else if(array[1]+1 == array[2]){
                 if(IsRuleInvalid(array[0], array[1], 0)){
                     Console.WriteLine("Error 4");
-                    return Triangle.ERROR.ToString();;
+                    return Triangle.Error.ToString();;
                 }
                 return Triangle.SCALENE.ToString();
             }
             else {
                 Console.WriteLine("Error 5");
-                return Triangle.ERROR.ToString();;
+                return Triangle.Error.ToString();;
             }
         }
 

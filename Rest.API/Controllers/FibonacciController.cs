@@ -49,7 +49,7 @@ namespace Rest.API.Controllers
             }
             Console.WriteLine("n after"+ n);
             Int64 result =_fibonacciService.Fibonacci(n);
-            if(isNegative){
+            if(isNegative && n%2==0){
                 result = result * -1;
             }
             Console.WriteLine("result "+ result);

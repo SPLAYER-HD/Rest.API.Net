@@ -39,13 +39,40 @@ namespace Rest.API.Controllers
             Console.WriteLine("a "+ a);
             Console.WriteLine("b "+ b);
             Console.WriteLine("c "+ c);
-            if(a<=0 || b <=0 || c<=0){
+            if(Validate(a, b, c)){
                 Console.WriteLine("Error");
                 return Task.FromResult("Error");
             }            
             String result = _triangleTypeService.TrianlgeType(a, b, c);
             Console.WriteLine("result "+ result);
             return Task.FromResult(result);
+        }
+
+        public bool Validate(int a, int b, int c){
+            bool isValid = false;
+            if(a<=0 || b <=0 || c<=0){
+                Console.WriteLine("Error 1");
+                isValid = true;
+            }
+            int[] array = new int[] { a, b, c };
+            Array.Sort(array); 
+            Console.WriteLine(array[0]);
+            Console.WriteLine(array[1]);
+            Console.WriteLine(array[2]);
+            /*
+            a b c
+            1 1 2 false
+            1 1 1 false
+
+            2 2 3 true
+            3 2 1 false
+            3 4 5 true
+            */
+            if(array[1] > array[0] + (array[0] - 1) || array[2] > array[0] + (array[0]- 1)){
+                Console.WriteLine("Error 2");
+                isValid = true;
+            }
+            return isValid;
         }
     }
 }

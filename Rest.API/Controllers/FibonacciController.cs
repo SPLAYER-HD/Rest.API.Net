@@ -38,7 +38,7 @@ namespace Rest.API.Controllers
                 Console.WriteLine("if 0 ");
                 return Ok((long)0);
             }
-            if(n>9999 || n<-9999){
+            if(n>92 || n<-92){// it works until 9999 but to this example is restricted to 92
                 Console.WriteLine("if 0 ");
                 return BadRequest("no content");
             }
